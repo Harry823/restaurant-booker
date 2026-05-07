@@ -1,8 +1,6 @@
 import "dotenv/config";
 import axios from "axios";
 
-const LINQ_BASE_URL = "https://api.linqapp.com/api/partner/v3";
-
 export async function sendMessage(
   to: string,
   text: string,
@@ -20,7 +18,7 @@ export async function sendMessage(
     body.effect = effect;
   }
 
-  const response = await axios.post(`${LINQ_BASE_URL}/chats`, body, {
+  const response = await axios.post(`${process.env.LINQ_BASE_URL}/chats`, body, {
     headers: {
       Authorization: `Bearer ${process.env.LINQ_API_KEY}`,
       "Content-Type": "application/json",
